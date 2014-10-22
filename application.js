@@ -64,12 +64,20 @@ $(function() {
   displayImage(image);
 
   $('#choice1').on('blur', function(){
-    choice1 = $('#choice1').text();
-    request();
+    if($('#choice1').text() === ""){
+      $('#choice1').text(choice1);
+    } else {
+      choice1 = $('#choice1').text();
+      request();
+    };
   });
 
   $('#choice2').on('blur', function(){
-    choice2 = $('#choice2').text();
-    secondRequest();
+    if($('#choice2').text() === ""){
+      $('#choice2').text(choice2);
+    } else {
+      choice2 = $('#choice2').text();
+      secondRequest();
+    };
   });
 });

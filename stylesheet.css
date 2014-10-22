@@ -22,3 +22,9 @@ h1 {
   max-width: 800px;
   margin: auto;
 }
+
+p {
+  text-align: center;
+  color: #353535;
+  margin: 5px;
+}
