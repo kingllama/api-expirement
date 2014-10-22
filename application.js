@@ -4,8 +4,7 @@ $(function() {
   var choice1 = "dogs"
   var choice2 = "cats"
   
-  function request () {
-    var onSuccess = 
+  var request = function () {
     $.ajax({
       url: "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=bf7d8d5f5ff44a310a6df6b13f38ba93&per_page=500&tags=" + choice1 + "&format=json&jsoncallback=?",
       type: "GET",
@@ -23,7 +22,7 @@ $(function() {
     });
   };
 
-  function secondRequest () {
+  var secondRequest = function () {
     $.ajax ({
       url: "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=bf7d8d5f5ff44a310a6df6b13f38ba93&per_page=500&tags=" + choice2 + "&format=json&jsoncallback=?",
       type: "GET",
@@ -41,11 +40,7 @@ $(function() {
     });
   };
 
-  function run () {
-
-  }
-
-  function chooseRandomPhoto(photos) {
+  var chooseRandomPhoto = function (photos) {
     randomIndex = Math.floor((Math.random() * 499) + 1);
     aOrB = Math.floor((Math.random() * 2));
     if(aOrB === 0){
@@ -56,7 +51,7 @@ $(function() {
     displayImage(image);
   };
 
-  function displayImage(photo) {
+  var displayImage = function (photo) {
     $('#image').attr('src', 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg')
   };
 
@@ -75,6 +70,6 @@ $(function() {
   $('#choice2').on('blur', function(){
     console.log("event: Choice 2 fired.")
     choice2 = $('#choice2').text();
-    request();
+    secondRequest();
   });
 });
