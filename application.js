@@ -1,5 +1,6 @@
 $(function() {
   var set1Pictures;
+  var set2Pictures;
   var loop = 0;
   var choice1 = "dogs"
   var choice2 = "cats"
@@ -10,7 +11,7 @@ $(function() {
       type: "GET",
       dataType: "jsonp",
       success: function(result){
-        pictures = result.photos.photo;
+        set1Pictures = result.photos.photo;
         secondRequest();
       },
       error: function(){
@@ -29,7 +30,7 @@ $(function() {
       dataType: "jsonp",
       success: function(result){
         set2Pictures = result.photos.photo;
-        chooseRandomPhoto()
+        chooseRandomPhoto();
       },
       error: function(){
         if(loop < 15){
@@ -60,15 +61,14 @@ $(function() {
   });
 
   request();
+  displayImage(image);
 
   $('#choice1').on('blur', function(){
-    console.log("event: Choice 1 fired.")
     choice1 = $('#choice1').text();
     request();
   });
 
   $('#choice2').on('blur', function(){
-    console.log("event: Choice 2 fired.")
     choice2 = $('#choice2').text();
     secondRequest();
   });
